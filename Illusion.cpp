@@ -438,9 +438,9 @@ HRESULT CIllusion::EnsureDirect2DResources()
 		cameraRenderer->Setup(m_pSensor, m_pRenderDevice);
 		m_pRenderDevice->AddRenderer(cameraRenderer);
 
-		BodyRenderer* bodyRenderer = new BodyRenderer();
+		/*BodyRenderer* bodyRenderer = new BodyRenderer();
 		bodyRenderer->Setup(m_pSensor, m_pRenderDevice);
-		m_pRenderDevice->AddRenderer(bodyRenderer);
+		m_pRenderDevice->AddRenderer(bodyRenderer);*/
 
 		MagicRenderer* magicRenderer = new MagicRenderer();
 		magicRenderer->Setup(m_pSensor, m_pRenderDevice);
