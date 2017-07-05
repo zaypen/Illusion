@@ -2,3 +2,6 @@ Debug
 Release
 Thumbs.db
 *.sdf
+*.aps
+*.suo
+*.vcxproj.user
