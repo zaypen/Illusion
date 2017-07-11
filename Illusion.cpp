@@ -33,7 +33,7 @@ m_hWnd(nullptr),
 	m_pSensor = new Sensor();
 	m_pRenderDevice = new RenderDevice();
 
-	m_pColorRGBX = new RGBQUAD[Sensor::COLOR_SIZE.width * Sensor::COLOR_SIZE.height];
+	m_pColorRGBX = new RGBQUAD[Sensor::COLOR_FRAME_SIZE.width * Sensor::COLOR_FRAME_SIZE.height];
 }
 
 
@@ -255,7 +255,7 @@ void CIllusion::Update()
 			else if (m_pColorRGBX)
 			{
 				pColorBuffer = m_pColorRGBX;
-				nColorBufferSize = Sensor::COLOR_SIZE.width * Sensor::COLOR_SIZE.height * sizeof(RGBQUAD);
+				nColorBufferSize = Sensor::COLOR_FRAME_SIZE.width * Sensor::COLOR_FRAME_SIZE.height * sizeof(RGBQUAD);
 				hr = pColorFrame->CopyConvertedFrameDataToArray(nColorBufferSize, reinterpret_cast<BYTE*>(pColorBuffer), ColorImageFormat_Bgra);
 			}
 			else
@@ -271,7 +271,7 @@ void CIllusion::Update()
             hr = pBodyFrame->GetAndRefreshBodyData(_countof(ppBodies), ppBodies);
         }
 
-		if (SUCCEEDED(hr) && pColorBuffer && nColorWidth == Sensor::COLOR_SIZE.width && nColorHeight == Sensor::COLOR_SIZE.height)
+		if (SUCCEEDED(hr) && pColorBuffer && nColorWidth == Sensor::COLOR_FRAME_SIZE.width && nColorHeight == Sensor::COLOR_FRAME_SIZE.height)
         {
 			ProcessFrame(pColorBuffer, ppBodies);
         }
@@ -432,7 +432,7 @@ HRESULT CIllusion::EnsureDirect2DResources()
     if (m_pRenderDevice && !m_pRenderDevice->Initialized())
     {
 		HWND hWnd = GetDlgItem(m_hWnd, IDC_VIDEOVIEW);
-		bool initialized = m_pRenderDevice->Initialize(hWnd, Sensor::COLOR_SIZE.width, Sensor::COLOR_SIZE.height);
+		bool initialized = m_pRenderDevice->Initialize(hWnd, Sensor::COLOR_FRAME_SIZE.width, Sensor::COLOR_FRAME_SIZE.height);
 
 		CameraRenderer* cameraRenderer = new CameraRenderer();
 		cameraRenderer->Setup(m_pSensor, m_pRenderDevice);

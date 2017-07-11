@@ -5,8 +5,8 @@
 class Sensor
 {
 public:
-	static const D2D1_SIZE_U DEPTH_SIZE;
-	static const D2D1_SIZE_U COLOR_SIZE;
+	static const D2D1_SIZE_U DEPTH_FRAME_SIZE;
+	static const D2D1_SIZE_U COLOR_FRAME_SIZE;
 
 	Sensor();
 	~Sensor();

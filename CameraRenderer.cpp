@@ -15,7 +15,7 @@ CameraRenderer::~CameraRenderer()
 void CameraRenderer::Initialize()
 {
 	m_pRenderDevice->RenderTarget()->CreateBitmap(
-		Sensor::COLOR_SIZE,
+		Sensor::COLOR_FRAME_SIZE,
 		D2D1::BitmapProperties(D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_IGNORE)),
 		&m_pBitmap
 		);
@@ -30,7 +30,7 @@ void CameraRenderer::Render(RGBQUAD* pColor, IBody** ppBodies)
 {
 	HRESULT hr = S_OK;
 
-	hr = m_pBitmap->CopyFromMemory(nullptr, pColor, Sensor::COLOR_SIZE.width * sizeof(RGBQUAD));
+	hr = m_pBitmap->CopyFromMemory(nullptr, pColor, Sensor::COLOR_FRAME_SIZE.width * sizeof(RGBQUAD));
 
 	if (SUCCEEDED(hr))
 	{

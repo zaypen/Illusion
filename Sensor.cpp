@@ -1,7 +1,7 @@
 #include "Sensor.h"
 
-const D2D1_SIZE_U Sensor::DEPTH_SIZE = D2D1::SizeU(512, 424);
-const D2D1_SIZE_U Sensor::COLOR_SIZE = D2D1::SizeU(1920, 1080);
+const D2D1_SIZE_U Sensor::DEPTH_FRAME_SIZE = D2D1::SizeU(512, 424);
+const D2D1_SIZE_U Sensor::COLOR_FRAME_SIZE = D2D1::SizeU(1920, 1080);
 
 Sensor::Sensor() : m_bInitialized(false), m_pKinectSensor(nullptr), m_pCoordinateMapper(nullptr), m_pMultiSourceFrameReader(nullptr)
 {
